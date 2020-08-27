@@ -26,23 +26,25 @@ $(document).ready(function(){
 		
 		function showUploadFile(uploadResultArr){
 				
-				var str = "";
+			var str = "";
+			
 			//data는 배열 for문과 같은 반복문을 이용하여 0~배열 끝까지 화면에 출력(each)
 			$(uploadResultArr).each(function(i, obj){
 				var fileCallPath = encodeURIComponent(obj.uploadPath + "/" + obj.uuid +"_"+ obj.fileName);
+				
 				if(!obj.image){	
 				//이미지파일이 아니면(image:false)
-					str+= "<li><a href='/myapp/download?fileName="+fileCallPath+"'>" + "<img src='resources/Image/attach.png'>" + obj.fileName + "</a></li>";
+					str+= "<li><a href='/myapp/download?fileName="+ fileCallPath +"'>" + "<img src='resources/Image/attach.png'>" + obj.fileName + "</a></li>";
 					
 				}else{
-				//이미지파일이면(image:true)
-					//var filecallPath = encodeURIComponent(obj.uploadPath + "/" + obj.uuid +"_"+ obj.fileName);
-					str+= "<li><img src='/myapp/display?fileName=" + fileCallPath +"'>"+ "<span data-file='"+ fileCallPath +"' data-type='image'><img src='resources/Image/x-icon.jpg'><span>" +"</li>";	
+				//이미지파일이면(image:true) - display 웹에 이미지 출력
+					var sfileCallPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.uuid +"_"+ obj.fileName);
+					str+= "<li><img src='/myapp/display?fileName=" + fileCallPath +"'>"+ "<span data-file='"+ sfileCallPath +"' data-type='image'><img src='resources/Image/x-icon.jpg'><span>" +"</li>";	
 				
 				}
 					
 			})
-				$(".uploadResult ul").append(str);	
+			$(".uploadResult ul").append(str);	
 		}
 		
 	//=======================================================
@@ -107,7 +109,7 @@ $(document).ready(function(){
 			dataType: "text",
 			type: "POST",
 			success: function(data){
-				console.log(data);
+				//console.log(data);
 			}
 		}) 
 	})// x 클릭 이벤트 끝

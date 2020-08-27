@@ -219,7 +219,7 @@ public class UploadController {
 		
 		//deleteFile(파일 삭제)
 		@RequestMapping(value="deleteFile", method = RequestMethod.POST)
-		public ResponseEntity<Resource> deleteFile(String fileName, String type){ // public void가 아닌 이상 return 타입이 있어야 하는데, return타입이 없으면 deleteFile에 빨간 줄 뜸(기억)
+		public ResponseEntity<String> deleteFile(String fileName, String type){ // public void가 아닌 이상 return 타입이 있어야 하는데, return타입이 없으면 deleteFile에 빨간 줄 뜸(기억)
 			
 			//test
 			//logger.info("fileName = " + fileName);
@@ -228,9 +228,16 @@ public class UploadController {
 			File file;
 			
 			try {
+				
 				file = new File("C:\\Users\\shinv\\Upload\\" + URLDecoder.decode(fileName,"UTF-8"));
 				
-				if(type.equals("image") ){
+				file.delete();
+				
+				if(type.equals("image")){
+					String originalFile = file.getAbsolutePath().replace("s_",""); //replace 치환함수 s_ 붙은것을 빈 문자열로 바꿔주기
+					file = new File(originalFile);
+					
+					//원본 이미지 파일 삭제
 					file.delete();
 					
 				}
@@ -239,7 +246,7 @@ public class UploadController {
 				e.printStackTrace();
 			}
 			
-			return null;
+			return new ResponseEntity<>("이미지가 삭제되었습니다", HttpStatus.OK);
 			
 		}//end of deleteFile
 

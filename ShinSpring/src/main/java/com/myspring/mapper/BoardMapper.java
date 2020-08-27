@@ -5,7 +5,6 @@ import java.util.List;
 import com.myspring.domain.BoardVO;
 import com.myspring.domain.Criteria;
 
-
 public interface BoardMapper {
 
 	//글쓰기
@@ -31,5 +30,6 @@ public interface BoardMapper {
 	
 	//조회 수 추가 기능(제목을 클릭했을 때)
 	public void updateViewcnt(BoardVO vo) throws Exception;
+	
 }
 
