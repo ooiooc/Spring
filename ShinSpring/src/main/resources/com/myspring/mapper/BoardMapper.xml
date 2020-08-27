@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.myspring.mapper.BoardMapper">
+	
+	<sql id="search">
+		<!-- 선택했을때만 검색되도록 -->
+		<if test="type != null">
+		<!-- 첫번째 제목만 선택했을때 -->
+		<if test="type == 'T'.toString()">
+		where title like CONCAT('%', #{keyword}, '%')		
+		</if>
+		
+		<if test="type == 'C'.toString()">
+		where content like CONCAT('%', #{keyword}, '%')		
+		</if>
+		
+		<if test="type == 'W'.toString()">
+		where writer like CONCAT('%', #{keyword}, '%')		
+		</if>
+		
+		<if test="type == 'TC'.toString()">
+		where (title like CONCAT('%', #{keyword}, '%') 
+		OR content like CONCAT('%', #{keyword}, '%'))
+		</if>
+		
+		<if test="type == 'CW'.toString()"> 
+		where (content like CONCAT('%', #{keyword}, '%') 
+		OR writer like CONCAT('%', #{keyword}, '%'))
+		</if>
+		
+		<if test="type == 'TCW'.toString()">
+		where (title like CONCAT('%', #{keyword}, '%')	
+			OR content like CONCAT('%', #{keyword}, '%') 
+			OR writer like CONCAT('%', #{keyword}, '%'))		
+		</if>
+	</if>
+	</sql>
+	
+	<insert id="create">
+	    insert into board (title, content, writer)
+		values(#{title}, #{content}, #{writer})
+	</insert>
+
+	<select id="read" resultType="com.myspring.domain.BoardVO">
+		select * from board where bno=#{bno}
+	</select>
+	
+	<update id="update">
+		update board
+		set title=#{title},
+			content=#{content},
+	        regdate=now() where bno=#{bno}
+	</update>
+	
+	<delete id="delete">
+		delete from board where bno=#{bno}
+	</delete>
+	
+	<select id="listAll" resultType="com.myspring.domain.BoardVO">
+	<![CDATA[
+	select * from board where bno > 0 order by bno desc
+	]]>
+	</select>
+	
+	<!-- LIMIT으로 페이징 처리 
+	<select id="listPage" resultType="com.myspring.domain.BoardVO">
+	<![CDATA[
+	select * from board where bno > 0 order by bno desc limit ${pageNum}, ${amount}
+	]]>
+	</select>-->
+	
+	<select id="listPage" resultType="com.myspring.domain.BoardVO">
+	
+	select bno, title, content, writer, regdate, viewcnt
+	from (select @rownum:=@rownum+1 as rownum, b.* 
+		from (select @rownum:=0) as tmp, board as b 
+
+		<include refid="search"></include>
+	  
+	    order by bno desc
+	   ) as boardList
+	
+	<![CDATA[
+	where rownum > (#{pageNum}-1)*#{amount} 
+	and rownum <= #{pageNum}*#{amount};
+	]]> 
+	</select>
+		
+	<select id="getTotalCount" resultType="int">
+	select count(*) from board
+	</select>
+	
+	<!-- 조회 수 기능-->
+	<update id="updateViewcnt" >
+	update board set viewcnt = viewcnt+1 where bno = #{bno}
+	</update>
+	
+</mapper>
