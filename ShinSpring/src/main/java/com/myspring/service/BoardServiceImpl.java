@@ -18,14 +18,12 @@ public class BoardServiceImpl implements BoardService{
 	@Autowired
 	private BoardMapper mapper;
 	
-	
 	@Autowired
 	private BoardAttachMapper attachmapper;
 	
 	//글쓰기
 	@Transactional
 	@Override
-	
 	public void create(BoardVO vo) throws Exception {
 		//board테이블에 insert
 		mapper.create(vo);

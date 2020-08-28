@@ -40,11 +40,22 @@
 	</if>
 	</sql>
 	
+	<!-- Insert -->
 	<insert id="create">
-	    insert into board (title, content, writer)
-		values(#{title}, #{content}, #{writer})
+	
+	<!-- Insert 하기 전 bno 값 만들어주기 -->
+	<selectKey keyProperty="bno" order="BEFORE" resultType="int">
+		
+		select max(bno)+1 bno from board
+	
+	</selectKey>
+	
+	    insert into board (bno, title, content, writer)
+		values(#{bno}, #{title}, #{content}, #{writer})
 	</insert>
+	<!-- Insert -->
 
+	<!-- Select -->
 	<select id="read" resultType="com.myspring.domain.BoardVO">
 		select * from board where bno=#{bno}
 	</select>
@@ -94,7 +105,7 @@
 	select count(*) from board
 	</select>
 	
-	<!-- 조회 수 기능-->
+	<!-- 조회 수 기능 -->
 	<update id="updateViewcnt" >
 	update board set viewcnt = viewcnt+1 where bno = #{bno}
 	</update>

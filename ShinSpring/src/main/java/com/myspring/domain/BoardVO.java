@@ -4,7 +4,7 @@ import java.util.List;
 
 public class BoardVO {
     
-	private Integer bno;
+	private int bno;
 	private String title;
 	private String content;
 	private String writer;
@@ -13,10 +13,10 @@ public class BoardVO {
 	
 	private List<BoardAttachVO> attachList;
 	
-	public Integer getBno() {
+	public int getBno() {
 		return bno;
 	}
-	public void setBno(Integer bno) {
+	public void setBno(int bno) {
 		this.bno = bno;
 	}
 	public String getTitle() {
