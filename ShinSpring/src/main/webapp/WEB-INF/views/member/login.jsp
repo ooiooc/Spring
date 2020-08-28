@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="/myapp/member/login" method="post">
+	<form action="/myapp/member/loginPost" method="post">
 	<h3>로그인</h3>
 	<table>
 	

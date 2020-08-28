@@ -13,9 +13,12 @@ public interface MemberDAO {
 	//public MemberVO memberRead(String userid);
 	public MemberVO memberRead(MemberVO vo);
 	public List<MemberVO> memberList();
+	
+	//update
 	//레코드 값을 다 불러오기 위해 () 안에 특정 인자값을 넣지 않아도 된다
 	public void updateMember(MemberVO vo);
 	
+	//delete
 	public void deleteMember(MemberVO vo);
 
 	//로그인 정보 조회 (select)

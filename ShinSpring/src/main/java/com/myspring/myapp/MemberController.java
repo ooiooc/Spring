@@ -32,21 +32,27 @@ public class MemberController {
 	}
 	
 	//로그인 처리
-	@RequestMapping(value = "login", method = RequestMethod.POST)
+	@RequestMapping(value = "loginPost", method = RequestMethod.POST)
 	public void loginPost(MemberVO member, Model model) throws Exception{
 		
 		logger.info("로그인 처리");
 		
 		MemberVO vo = meservice.login(member);
 		
+		logger.info("vo 값은 "+ vo);
+	
+		
+		//로그인이 안되었으면 return 하기 (48번째 라인 실행 x)
 		//select된 결과(vo)가 null이면
-		//로그인 처리 되지 않으면 return 하기 (48번째 라인 실행 x)
 		if(vo == null) {
 			return;
 		}
 		
 		// 로그인 조회 정보를 userVO 변수에 저장해서 login.jsp에 처리
 		model.addAttribute("userVO", vo);	
+	
 	}//end 로그인처리
+	
+	//
 	
 }//end
