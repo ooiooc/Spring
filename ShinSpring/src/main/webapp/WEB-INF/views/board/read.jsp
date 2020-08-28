@@ -13,23 +13,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<style type="text/css">
-
-body {
-   font-family: 'Noto Sans KR', sans-serif;
-}
-
-/* .replyarea{
-	border: 1px solid #000;
-} */
-
-table{
-	border-collapse: collapse;
-	border: 1px solid #000;
-}
-
-</style>
-
 </head>
 
 <body>
@@ -47,7 +30,7 @@ table{
 	<form role="form" >
 	
 	<input type="text" name="bno" id="bno" value="${read.bno}">
-	<input type="text" name="pageNum" value="${cri.pageNum}">
+	<input type="hidden" name="pageNum" value="${cri.pageNum}">
 	
 	<table border="1" width="400" style="text-align:center">
 		<tr>

@@ -58,7 +58,7 @@ $(document).ready(function(){
 				str+= "<li><img src='/myapp/display?fileName=" + fileCallPath +"'></li>";
 			
 			}else{ //other type
-				str+= "<li><a href='/myapp/download?fileName="+ fileCallPath +"'>" + attach.fileName + "</a></li>";			
+				str+= "<li><a href='/myapp/download?fileName="+ fileCallPath +"'>"+ "<img src='resources/Image/attach.png'>" + attach.fileName + "</a></li>";			
 				
 			}
 			

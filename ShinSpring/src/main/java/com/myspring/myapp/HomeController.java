@@ -1,7 +1,5 @@
 package com.myspring.myapp;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -38,6 +36,19 @@ public class HomeController {
 		model.addAttribute("str", str);
 		
 		return "home";
+	}// home 메소드 끝
+	
+	@RequestMapping(value = "/doA", method = RequestMethod.GET)
+	public void doA(Locale locale, Model model) {
+		
+		System.out.println("doA................");
+	}
+	
+	@RequestMapping(value = "/doB", method = RequestMethod.GET)
+	public void doB(Locale locale, Model model) {
+		
+		System.out.println("doB................");
+		model.addAttribute("result", "DOB RESULT");
 	}
 	
 }

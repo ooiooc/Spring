@@ -48,9 +48,11 @@ public class BoardServiceImpl implements BoardService{
 		mapper.update(vo);
 	}
 
+	@Transactional
 	@Override
 	public void delete(BoardVO vo) throws Exception {
 		mapper.delete(vo);
+
 	}
 
 	@Override

@@ -1,12 +1,23 @@
 @charset "UTF-8";
 
+/* *{
+	margin: 0;
+	padding: 0;
+} */
+
+body {
+   font-family: 'Noto Sans KR', sans-serif;
+}
+
+
 .uploadResult{
 	width:100%;
 	background-color: #F1C9C1;
 }
 
-.uploadResult ul li img{
-
+.uploadResult ul{
+	display: flex;
+	justify-content: center;
 }
 
 .uploadResult ul li{
@@ -14,9 +25,15 @@
 	padding: 10px;
 	align-content: center;
 	text-align: center;
+	border: 1px solid #000;
 }
 
 .uploadResult ul li img{
 	width:100px;
 	height: 100px;
+}
+
+table{
+	border-collapse: collapse;
+	border: 1px solid #000;
 }

@@ -8,9 +8,16 @@ public class MemberVO {
 	private String userpw;
 	private String username;
 	private String email;
-	Date regdate;
-	Date updatedate;
+	private Date regdate;
+	private Date updatedate;
+	private boolean useCookie;
 	
+	public boolean isUseCookie() {
+		return useCookie;
+	}
+	public void setUseCookie(boolean useCookie) {
+		this.useCookie = useCookie;
+	}
 	public String getUserid() {
 		return userid;
 	}
@@ -51,7 +58,7 @@ public class MemberVO {
 	@Override
 	public String toString() {
 		return "MemberVO [userid=" + userid + ", userpw=" + userpw + ", username=" + username + ", email=" + email
-				+ ", regdate=" + regdate + ", updatedate=" + updatedate + "]";
+				+ ", regdate=" + regdate + ", updatedate=" + updatedate + ", useCookie=" + useCookie + "]";
 	}
 	
 }
