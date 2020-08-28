@@ -55,11 +55,12 @@
 	</insert>
 	<!-- Insert -->
 
-	<!-- Select -->
+	<!-- select -->
 	<select id="read" resultType="com.myspring.domain.BoardVO">
 		select * from board where bno=#{bno}
 	</select>
 	
+	<!-- update -->
 	<update id="update">
 		update board
 		set title=#{title},

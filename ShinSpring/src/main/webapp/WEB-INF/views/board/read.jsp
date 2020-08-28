@@ -9,6 +9,7 @@
 <script type="text/javascript" src="../resources/js/read.js"></script>
 <script type="text/javascript" src="../resources/js/ajaxtest.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../resources/css/read.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
@@ -45,7 +46,7 @@ table{
 	
 	<form role="form" >
 	
-	<input type="hidden" name="bno" id="bno" value="${read.bno}">
+	<input type="text" name="bno" id="bno" value="${read.bno}">
 	<input type="text" name="pageNum" value="${cri.pageNum}">
 	
 	<table border="1" width="400" style="text-align:center">
@@ -69,15 +70,24 @@ table{
 			<button type="submit" class="btn-primary">목록</button>
 			</td>
 		</tr>
-	
+		
 		<tr>
+			<td colspan="2" class="uploadResult">
+			<h4>이미지 업로드 목록</h4>
+				<ul></ul>
+			</td>
+		</tr>
+		
 		<!-- 댓글 설정 -->
+		<!-- 작성댓글 보이는 공간 -->
+		<tr>
 			<td colspan="2">
 			<ul id="replies">
 			</ul>
 			</td>
 		</tr>
 		
+		<!-- 댓글 작성란 -->
 		<tr>
 			<td>
 			작성자 <input type="text" name="replyer" id="newReplyWriter"><br>
@@ -86,14 +96,14 @@ table{
 			<td><button id="replyAddBtn">댓글 등록</button></td>
 			
 		</tr>
+		
 		<tr>
 			<td colspan="2">
 			<ul id="replyPage">
 			</ul></td>
 		</tr>
 	</table>	
-		
-	
 	</form>
+	
 </body>
 </html>

@@ -67,6 +67,11 @@ public class BoardServiceImpl implements BoardService{
 	public int getTotalCount(Criteria cri) throws Exception {
 		return mapper.getTotalCount(cri);
 	}
+
+	@Override
+	public List<BoardAttachVO> getAttachlist(int bno) {
+		return attachmapper.select(bno);
+	}
 	
 	
 }

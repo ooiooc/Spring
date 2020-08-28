@@ -36,5 +36,40 @@ $(document).ready(function(){
 		formObj.submit();
 	});
 	
+	//bno값을 저장하는 변수
+	var bno = $("#bno").val()
+		//alert(bno);
+	
+	//attachList에 대한 처리
+	$.getJSON("/myapp/board/getAttachlist", {bno:bno}, function(arr){
+		console.log(arr);		
+		
+		
+		//
+		var str = "";
+		
+		$(arr).each(function(i, attach){ //arr[i]에 있는 값을 attach에 넣는 것을 반복
+			
+			var fileCallPath = encodeURIComponent(attach.uploadPath + "/" + attach.uuid +"_"+ attach.fileName);
+
+			//파일 타입에 따라 이미지 여부 확인
+			if(attach.fileType){ //image type
+				var sfileCallPath = encodeURIComponent(attach.uploadPath + "/s_" + attach.uuid +"_"+ attach.fileName);
+				str+= "<li><img src='/myapp/display?fileName=" + fileCallPath +"'></li>";
+			
+			}else{ //other type
+				str+= "<li><a href='/myapp/download?fileName="+ fileCallPath +"'>" + attach.fileName + "</a></li>";			
+				
+			}
+			
+		})
+		$(".uploadResult ul").append(str);
+	})
+
 });
+
+//======================================================
+	
+
+	
 
