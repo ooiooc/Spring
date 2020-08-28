@@ -20,6 +20,12 @@
 		<td><input type="password" name="userpw"></td>
 	</tr>
 	
+	<tr>
+		<td colspan="2">
+		<input type="submit" value="로그인">
+		</td>
+	</tr>
+	
 	</table>
 	</form>
 </body>
