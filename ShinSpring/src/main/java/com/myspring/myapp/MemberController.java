@@ -1,5 +1,8 @@
 package com.myspring.myapp;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,40 +22,53 @@ public class MemberController {
 	@Autowired
 	private MemberService meservice;
 	
-	//회원가입 화면 폼
+	//회원가입 화면 폼  =================================================
 	@RequestMapping(value = "member", method = RequestMethod.GET)
 	public void memberget() {
 		
 	}
 	
-	//로그인 화면 폼
+	//회원가입 처리  =================================================
+	@RequestMapping(value = "member", method = RequestMethod.POST)
+	public void memberpost(MemberVO vo) {
+		meservice.createMember(vo); //service불러오기
+			
+	}
+	
+	//로그인 화면 폼  =================================================
 	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public void loginGet() throws Exception{
 		logger.info("로그인 화면 이동");
 	}
 	
-	//로그인 처리
+	//로그인 처리 =================================================
 	@RequestMapping(value = "loginPost", method = RequestMethod.POST)
-	public void loginPost(MemberVO member, Model model) throws Exception{
+	public String loginPost(MemberVO member, Model model, HttpServletRequest request) throws Exception{
+		
+		HttpSession session = request.getSession();
 		
 		logger.info("로그인 처리");
 		
 		MemberVO vo = meservice.login(member);
 		
-		logger.info("vo 값은 "+ vo);
-	
+		//만약에 interceptor를 사용하지 않고 로그인 처리를 하고자 할 때는 아래처럼 작성할 것
+		if(vo != null ) { //로그인이 되었으면
+			
+			session.setAttribute("login", vo);
+			logger.info("세션 값은 " + session.getAttribute("login"));
+			return "redirect:/";
 		
-		//로그인이 안되었으면 return 하기 (48번째 라인 실행 x)
-		//select된 결과(vo)가 null이면
-		if(vo == null) {
-			return;
+		}else{ //로그인이 되어있지 않으면, login.jsp로 이동
+			
+			return "redirect:/member/login";
+			
 		}
-		
-		// 로그인 조회 정보를 userVO 변수에 저장해서 login.jsp에 처리
-		model.addAttribute("userVO", vo);	
+
 	
 	}//end 로그인처리
 	
-	//
+	//로그아웃
+	
+	//end 로그아웃
 	
 }//end

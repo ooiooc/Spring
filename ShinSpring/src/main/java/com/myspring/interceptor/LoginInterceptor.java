@@ -1,5 +1,6 @@
 package com.myspring.interceptor;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -26,21 +27,33 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 	//MemberController에 loginPost 메소드에 얻은 select 결과의 model(userVO) 정보 불러오기
 	Object userVO = modelAndView.getModel().get("userVO");
 	
+	//세션 유지기간
+	session.setMaxInactiveInterval(60*30); //세션을 30분동안 유지
+	
+	//==============================================================================
 	//userVO에 정보가 있으면
 	if(userVO != null) {
 		logger.info("new login success");
 		session.setAttribute("login", userVO);
+		
+		//if(request.getParameter("useCookie") != null) {
+			Cookie loginCookie = new Cookie("loginCookie", session.getId()); //쿠키 생성
+			loginCookie.setPath("/");
+			loginCookie.setMaxAge(60*60*24*7); //초, 분, 초, 일 = 7일동안 쿠키 보관 / 
+			response.addCookie(loginCookie);
+		//}
+		
 		response.sendRedirect("/myapp"); //메인으로 돌아가기
 		}
-		// 세션에 userVO값 저장
-		
+	
+	// 세션에 userVO값 저장
 	}
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, 
 							HttpServletResponse response, 
 							Object handler) throws Exception {
-		System.out.println("post handle......");
+		System.out.println("pre handle......");
 		return true;
 	}
 	

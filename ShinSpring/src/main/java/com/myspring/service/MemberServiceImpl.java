@@ -14,5 +14,10 @@ public class MemberServiceImpl implements MemberService{
 	public MemberVO login(MemberVO member) {
 		return memapper.login(member);
 	}
+
+	@Override
+	public void createMember(MemberVO vo) {
+		memapper.createMember(vo);
+	}
 	
 }
