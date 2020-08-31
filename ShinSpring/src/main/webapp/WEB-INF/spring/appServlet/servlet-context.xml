@@ -33,8 +33,12 @@
 	<!-- 인터셉터 설정 -->
 	<beans:bean id="sampleInterceptor" class="com.myspring.interceptor.SampleInterceptor"></beans:bean>
 	
+	<!-- 로그인 -->
 	<beans:bean id="loginInterceptor" class="com.myspring.interceptor.LoginInterceptor"></beans:bean>
 	
+	<!-- 로그인 사용자만 접근할 수 있도록 글쓰기 권한 처리 -->
+	<beans:bean id="authInterseptor" class="com.myspring.interceptor.AuthInterseptor"></beans:bean>
+		
 	<interceptors>
 		<interceptor>
 		<mapping path="/doA"/>
@@ -42,11 +46,18 @@
 		<beans:ref bean="sampleInterceptor"/>
 		</interceptor>
 	</interceptors>
-	
+
 	<interceptors>
 		<interceptor>
 		<mapping path="/member/loginPost"/>
 		<beans:ref bean="loginInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
+	<interceptors>
+		<interceptor>
+		<mapping path="/member/register"/>
+		<beans:ref bean="authInterseptor"/>
 		</interceptor>
 	</interceptors>
 	
