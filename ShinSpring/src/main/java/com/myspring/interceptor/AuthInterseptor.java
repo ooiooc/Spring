@@ -23,7 +23,7 @@ public class AuthInterseptor extends HandlerInterceptorAdapter {
 			logger.info("user not logined");
 			
 			//로그인 안한 사용자는 글쓰기 권한이 없으므로 로그인 페이지로 이동
-			response.sendRedirect("myapp/login");
+			response.sendRedirect("/myapp/member/login");
 			return false; //글쓰기하지 못하도록 false 값
 		}
 		
