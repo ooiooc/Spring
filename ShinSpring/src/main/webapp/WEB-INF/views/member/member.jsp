@@ -17,7 +17,7 @@
 	<h2>회원가입</h2>
 	
 	<!-- action에 controller mapping 주소 넣기-->
-	<form action="member" method="post">
+	<form action="member" method="post" onsubmit="return checkmem()">
 	<table>
 		<tr>
 			<td><label>아이디</label><br>
