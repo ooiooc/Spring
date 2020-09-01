@@ -6,12 +6,22 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.myspring.domain.MemberVO;
+import com.myspring.domain.ReplyPageVO;
+import com.myspring.domain.ReplyVO;
 import com.myspring.service.MemberService;
 
 @Controller
@@ -25,7 +35,7 @@ public class MemberController {
 	//회원가입 화면 폼  =================================================
 	@RequestMapping(value = "member", method = RequestMethod.GET)
 	public void memberget() {
-		
+		logger.info("회원가입 폼으로 이동");
 	}
 	
 	//회원가입 처리  =================================================
@@ -67,8 +77,18 @@ public class MemberController {
 	
 	}//end 로그인처리
 	
-	//로그아웃
-	
-	//end 로그아웃
+	//아이디 중복체크
+	@ResponseBody
+	@RequestMapping(value = "checkId/{userid}", method = RequestMethod.GET)
+		public ResponseEntity<Integer> idChk(@PathVariable("userid") String userid) throws Exception{
+		logger.info("aaa");
+		int result=meservice.idChk(userid);
+		
+		logger.info(userid);
+		
+		return new ResponseEntity<>(result, HttpStatus.OK);
+	}
+	//end 아이디 중복체크
+
 	
 }//end

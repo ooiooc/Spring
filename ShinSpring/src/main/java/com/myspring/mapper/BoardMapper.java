@@ -7,28 +7,28 @@ import com.myspring.domain.Criteria;
 
 public interface BoardMapper {
 
-	//±Û¾²±â
+	//ï¿½Û¾ï¿½ï¿½ï¿½
 	public void create(BoardVO vo) throws Exception;
 	
-	//Á¦¸ñ Å¬¸¯ ÈÄ ÇÑ°Ç¿¡ ´ëÇÑ select
+	//ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ ï¿½ï¿½ ï¿½Ñ°Ç¿ï¿½ ï¿½ï¿½ï¿½ï¿½ select
 	public BoardVO read(BoardVO vo) throws Exception;
 	
-	//±Û ¼öÁ¤
+	//ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public void update(BoardVO vo) throws Exception;
 	
-	//±Û »èÁ¦
+	//ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public void delete(BoardVO vo) throws Exception;
 	
-	//ÆäÀÌÂ¡ Ã³¸® ¾ÈµÈ ¸ñ·Ï ¸®½ºÆ®
+	//ï¿½ï¿½ï¿½ï¿½Â¡ Ã³ï¿½ï¿½ ï¿½Èµï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	public List<BoardVO> listAll() throws Exception;
 	
-	//ÆäÀÌÂ¡ Ã³¸®µÈ ¸ñ·Ï ¸®½ºÆ®
+	//ï¿½ï¿½ï¿½ï¿½Â¡ Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	public List<BoardVO> listPage(Criteria cri) throws Exception;
 
-	//ÆäÀÌÂ¡ Ã³¸®¸¦ À§ÇÑ Ä«¿îÆÃ
+	//ï¿½ï¿½ï¿½ï¿½Â¡ Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½ï¿½ï¿½
 	public int getTotalCount(Criteria cri);
 	
-	//Á¶È¸ ¼ö Ãß°¡ ±â´É(Á¦¸ñÀ» Å¬¸¯ÇßÀ» ¶§)
+	//ï¿½ï¿½È¸ ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½)
 	public void updateViewcnt(BoardVO vo) throws Exception;
 	
 }

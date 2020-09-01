@@ -12,6 +12,7 @@ public class MemberVO {
 	private Date updatedate;
 	private boolean useCookie;
 	
+	
 	public boolean isUseCookie() {
 		return useCookie;
 	}

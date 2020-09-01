@@ -19,5 +19,10 @@ public class MemberServiceImpl implements MemberService{
 	public void createMember(MemberVO vo) {
 		memapper.createMember(vo);
 	}
+
+	@Override
+	public int idChk(String userid){
+		return memapper.idChk(userid);
+	}
 	
 }

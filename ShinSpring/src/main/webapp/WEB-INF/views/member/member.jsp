@@ -8,12 +8,12 @@
 
 <script type="text/javascript" src="../resources/js/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="../resources/js/member.js"></script>
-<script type="text/javascript" src="../resources/js/ajaxtest.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="../resources/css/member.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/member.css"/>
 </head>
 <body>
 	
+	<div class="container">
 	<h2>회원가입</h2>
 	
 	<!-- action에 controller mapping 주소 넣기-->
@@ -21,17 +21,21 @@
 	<table>
 		<tr>
 			<td><label>아이디</label><br>
-			<input type="text" name="userid"></td>
+			<input type="text" name="userid" id="userid">
+			<button type="button" id="checkId">중복확인</button><br>
+			<label id="idmsg" class="msg"></label></td>
 		</tr>
 		
 		<tr>
 			<td><label>비밀번호</label><br>
-			<input type="password" name="userpw"></td>
+			<input type="password" name="userpw" id="userpw"><br>
+			<label id="pwmsg" class="msg"></label></td>
 		</tr> 
 		
 		<tr>
 			<td><label>비밀번호 재확인</label><br>
-			<input type="password"></td>
+			<input type="password" id="repw"><br>
+			<label id="repwmsg" class="msg"></label></td>
 		</tr> 
 		
 		<tr>
@@ -45,12 +49,16 @@
 		</tr>
 		
 		<tr>
-			<td><input type="submit" value="회원가입"></td>
+			
+			<td class="btnArea">
+			<input type="submit" value="회원가입">&emsp;&emsp;
+			<input type="reset" value="처음으로">
+			</td>
+			
 		</tr>
 	
 	</table>
 	</form>
-	
-	
+	</div>
 </body>
 </html>
