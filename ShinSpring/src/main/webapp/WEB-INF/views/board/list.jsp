@@ -9,30 +9,10 @@
 <head>
 
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-<!-- <link rel="stylesheet" type="text/css" href="/resources/css/style.css" > -->
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-/*
-*{
-	font-family: 'Noto Sans KR', sans-serif;
-	margin: 0;
-	padding: 0;
-}
 
-.wrap{
-	border: 1px solid #000;
-	margin: 0 auto;
-	display: flex;
-	justify-content: center;
-}
-
-.search{
-	display: flex;
-	flex-direction: row;
-}
-*/
-</style>
 
 </head>
 

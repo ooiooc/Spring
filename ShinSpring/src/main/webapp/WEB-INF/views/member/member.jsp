@@ -22,7 +22,7 @@
 		<tr>
 			<td><label>아이디</label><br>
 			<input type="text" name="userid" id="userid">
-			<button type="button" id="checkId">중복확인</button><br>
+			<input type="button" id="checkId" value="중복확인"><br>
 			<label id="idmsg" class="msg"></label></td>
 		</tr>
 		

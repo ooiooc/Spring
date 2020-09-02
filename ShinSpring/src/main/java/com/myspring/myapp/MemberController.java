@@ -32,7 +32,7 @@ public class MemberController {
 	@Autowired
 	private MemberService meservice;
 	
-	//회원가입 화면 폼  =================================================
+	//회원가입 화면 폼  ===============================================
 	@RequestMapping(value = "member", method = RequestMethod.GET)
 	public void memberget() {
 		logger.info("회원가입 폼으로 이동");
@@ -51,7 +51,7 @@ public class MemberController {
 		logger.info("로그인 화면 이동");
 	}
 	
-	//로그인 처리 =================================================
+	//로그인 처리 ====================================================
 	@RequestMapping(value = "loginPost", method = RequestMethod.POST)
 	public String loginPost(MemberVO member, Model model, HttpServletRequest request) throws Exception{
 		
@@ -71,22 +71,27 @@ public class MemberController {
 		}else{ //로그인이 되어있지 않으면, login.jsp로 이동
 			
 			return "redirect:/member/login";
-			
 		}
 
-	
 	}//end 로그인처리
 	
-	//아이디 중복체크
+	//아이디 중복체크  =================================================
 	@ResponseBody
 	@RequestMapping(value = "checkId/{userid}", method = RequestMethod.GET)
 		public ResponseEntity<Integer> idChk(@PathVariable("userid") String userid) throws Exception{
-		logger.info("aaa");
-		int result=meservice.idChk(userid);
 		
-		logger.info(userid);
+		//getAjax를 이용하기 위하여 ResponseEntity 필요
+		//userid count값을 불러오기 위해서 return타입을 Integer로 불러와야 한다
 		
-		return new ResponseEntity<>(result, HttpStatus.OK);
+		logger.info("userid = " + userid);
+		
+		//int result = meservice.idChk(userid);
+		//meservice.idChk(userid)
+		//return new ResponseEntity<>(result, HttpStatus.OK);
+		
+		return new ResponseEntity<Integer>(meservice.idChk(userid),HttpStatus.OK);
+
+		
 	}
 	//end 아이디 중복체크
 

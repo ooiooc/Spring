@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+*{
+	padding:0;
+	margin:0;	
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.container{
+
+	text-align: center;
+}
+
+h2{
+	padding: 13px;
+	
+}
+
+table{
+	border-collapse: collapse;
+	/*border: 1px solid #000;*/
+	width: 24rem;
+	margin: 1em auto;
+}
+
+td{
+	padding: 0.8em;
+}
+
+.btnArea{
+/* 	display: flex;
+	justify-content:space-between; */
+}
+
+.btnArea input{
+	width: 7em;
+	height: 2em;
+	font-size: 15px;
+}
+
+
+.msg{
+	color: red;
+	font-size: 14px;
+}

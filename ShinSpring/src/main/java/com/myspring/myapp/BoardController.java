@@ -25,7 +25,7 @@ import com.myspring.service.BoardService;
 @RequestMapping("board")
 public class BoardController {
 	
-@Autowired
+	@Autowired
  	private BoardService service;
 
  	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);

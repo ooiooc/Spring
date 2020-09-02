@@ -56,7 +56,12 @@
 	
 	<interceptors>
 		<interceptor>
+		<!-- 글쓰기 하기 전 로그인 상태를 확인한 후 권한 부여 -->
 		<mapping path="/board/register"/>
+		<!-- 글 수정 하기 전 로그인 상태를 확인한 후 권한 부여 -->
+		<mapping path="/board/modify"/>
+		<!-- 글 삭제 하기 전 로그인 상태를 확인한 후 권한 부여 -->
+		<mapping path="/board/remove"/>
 		<beans:ref bean="authInterseptor"/>
 		</interceptor>
 	</interceptors>

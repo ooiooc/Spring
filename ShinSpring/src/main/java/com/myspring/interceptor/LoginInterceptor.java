@@ -18,6 +18,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 	public void postHandle(HttpServletRequest request, 
 							HttpServletResponse response, Object handler, 
 							ModelAndView modelAndView) throws Exception {
+		logger.info("Interseptor");
 	
 	//MemberController에 loginPost 메소드에 얻은 select 결과의 model 정보를 interceptor 해서 
 	//session 영역에 저장 (model에 있는 userVO를 가져와서 HttpSession에서 로그인 처리
@@ -34,7 +35,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 	//userVO에 정보가 있으면
 	if(userVO != null) {
 		logger.info("new login success");
-		session.setAttribute("login", userVO);
+		session.setAttribute("login", userVO); //userVO : Select한 결과 가지고 있음(아이디, 패스워드, 이름)
 		
 		//if(request.getParameter("useCookie") != null) {
 			Cookie loginCookie = new Cookie("loginCookie", session.getId()); //쿠키 생성

@@ -1,7 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+
 <meta charset="UTF-8">
 <html>
 <head>
@@ -13,6 +12,8 @@
 </h1>
 	
  	<%-- The time on the server is ${serverTime}. --%>
-	<P>${str}</P>
+	<p>${str}</p>
+	<p>${login.username}님 환영합니다</p>
+	
 </body>
 </html>

@@ -15,6 +15,7 @@ public class BoardAttachVO {
 	private boolean fileType;
 	private int bno;
 	
+	
 	public String getUuid() {
 		return uuid;
 	}
@@ -39,12 +40,15 @@ public class BoardAttachVO {
 	public void setFileType(boolean fileType) {
 		this.fileType = fileType;
 	}
+	
 	public int getBno() {
 		return bno;
 	}
 	public void setBno(int bno) {
 		this.bno = bno;
 	}
+
+	
 	@Override
 	public String toString() {
 		return "BoardAttachVO [uuid=" + uuid + ", uploadPath=" + uploadPath + ", fileName=" + fileName + ", fileType="

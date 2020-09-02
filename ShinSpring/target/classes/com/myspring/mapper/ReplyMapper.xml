@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.myspring.mapper.ReplyMapper">
+ 	
+ 	<select id="list" resultType="com.myspring.domain.ReplyVO">
+	<!-- select * from reply
+	where bno=#{bno}
+	order by rno desc -->
+	
+	select rno, bno, replytext, replyer, regdate, updatedate
+	from (
+			select @rownum:=@rownum+1 as rownum, b.* 
+			from (select @rownum:=0) as tmp, reply as b 
+			where bno = #{bno}
+		    order by rno desc
+		 ) as boardList
+	
+	<![CDATA[
+		where rownum > (#{cri.pageNum}-1)*#{cri.amount} 
+		and rownum <= #{cri.pageNum}*#{cri.amount};
+	]]> 
+	<!-- list에 bno와 cri가 같이  같이 있기 때문에 구분시켜주기 위해 cri를 붙여준다. -->
+	</select>
+	
+	
+	<select id="getCountByBno" resultType="int">
+	select count(*) from reply where bno = #{bno}
+	</select>
+	
+	
+	<!-- <select id="listPaging" resultType="com.myspring.domain.ReplyVO">
+	select rno, bno, replytext, replyer, regdate, updatedate
+	from (select @rownum:=@rownum+1 as rownum, b.* 
+		from (select @rownum:=0) as tmp, board as b 
+  
+	    order by bno desc
+	   ) as boardList
+	
+	<![CDATA[
+	where rownum > (#{pageNum}-1)*#{amount} 
+	and rownum <= #{pageNum}*#{amount};
+	]]> 
+	</select> -->
+	
+	
+	<insert id="create">
+ 	insert into reply(bno, replytext, replyer) 
+ 	values(#{bno},#{replytext},#{replyer})
+ 	</insert>
+ 	
+ 	
+ 	<update id="update">
+ 	update reply set replytext=#{replytext}, 
+ 					updatedate=now()
+	where rno=#{rno} 
+ 	</update>
+
+
+	<delete id="delete">
+	delete from reply 
+	where rno=#{rno}
+	</delete>
+	
+	
+	
+</mapper>

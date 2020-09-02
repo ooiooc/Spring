@@ -19,7 +19,7 @@ public class TranServiceTest {
 	
 	@Test
 	public void testTran() {
-		String str="원자성: 하나의 트랜잭션은 모두 하나의 단위로 처리되어야 합니다. "
+		String str="원자성: dsfd 하나의 트랜잭션은 모두 하나의 단위로 처리되어야 합니다. "
 				+ "좀 더 쉽게 말하자면 어떤 트랜잭션이 A와 B로 구성된다면 항상 A,B의 처리결과는 동일한 결과여야 합니다."
 				+ " 즉~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
 		service.addData(str);

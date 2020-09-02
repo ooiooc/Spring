@@ -4,8 +4,7 @@
 
 //document 선택자, ready 이벤트
 $(document).ready(function(){
-
-	// 댓글 전체 리스트(페이징 처리 된 것)
+// 댓글 전체 리스트(페이징 처리 된 것)
 	var bnoValue = $("#bno").val(); //id가 bno인 것 선택
 	var bno = bnoValue; //게시판 번호
 	var page = 1; //페이지 번호
@@ -193,4 +192,5 @@ $(document).ready(function(){
 				
 			$("#modDiv").hide("slow"); 
 	})
+	
 })
